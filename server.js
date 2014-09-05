@@ -22,7 +22,7 @@ var DB_URL = process.env.OPENSHIFT_MONGODB_DB_URL || 'localhost' ;
 //Connect to MongoDb
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 
-mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL + 'bodaSite');
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL + 'bodasite');
 }
 
 else {

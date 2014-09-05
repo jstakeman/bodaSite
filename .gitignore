@@ -34,5 +34,7 @@ node_modules
 ### Linux ###
 *~
 
+### OSX ###
+.DS_Store
 # KDE directory preferences
 .directory

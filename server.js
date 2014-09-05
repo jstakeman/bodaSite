@@ -69,6 +69,6 @@ process.on('SIGINT', function() {
     });
 
 app.listen(port, ip_address, function (){
-console.log('Express is listening on ' + ip_address + ' at port' + port);
+console.log('Express is listening on ' + ip_address + ' at port ' + port);
 });
 

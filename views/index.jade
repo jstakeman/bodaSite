@@ -10,6 +10,21 @@ html
   body
     .container
       .row
-        .col-sm-12
-          h1 Yes I assure you. We are open!
+        .col-sm-6.col-sm-offset-3.well
+          form.form-horizontal(name="createguet",method="post",action="/", role="form")
+            fieldset
+              legend Contact Info
+              .form-group
+                label.col-sm-4.control-label(for="textinput") First Name
+                .col-sm-8
+                  input.form-control(id="first-name" name="firstName" type="text")
+              .form-group
+                label.col-sm-4.control-label(for="textinput") Last Name
+                .col-sm-8
+                  input.form-control(id="last-name" name="lastName" type="text")
+              .form-group
+                label.col-sm-4.control-label(for="textinput") Zip Code
+                .col-sm-6
+                  input.form-control(id="zipcode" name="zipcode" type="text")
+              button.btn.pull-right.btn-primary#btnSubmit(type="submit") submit
 

@@ -29,7 +29,7 @@ else {
 mongoose.connect('mongodb://localhost/test');
 }
 
-mongoose.connect(DB_URL + DB_NAME);
+
 var Guest = require('./guest');
 
 //Configure bodyParser

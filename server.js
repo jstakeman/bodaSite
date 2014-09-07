@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var http = require('http');
 var path = require('path');
+var signin = require('./login.js');
+var session = require('express-session');
 
 
 //Enivornment Variables
@@ -18,6 +20,17 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000 ;
 var ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 var DB_URL = process.env.OPENSHIFT_MONGODB_DB_URL || 'localhost' ;
 
+if ('production' == process.env.NODE_ENV){
+  var env = { 'username': process.env.USERNAME ,
+              'password': process.env.PASSWORD ,
+
+             'session_key' : process.env.SESSION_KEY
+          }
+
+}
+else {
+	var env = require('./env.json');
+}
 
 //Connect to MongoDb
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
@@ -36,11 +49,23 @@ var Guest = require('./guest');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({secret: env.session_key}));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+function restrict(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    req.session.error = 'Access denied!';
+    res.redirect('/login');
+  }
+}
+
 // Temporary Home of Routes
+app.get('/login', signin.login);
+app.post('/login', signin.check(env));
 
 app.get('/', function(req, res){
 	res.render('index');
@@ -60,7 +85,7 @@ app.post('/', function(req, res){
   })
 });
 
-app.get('/show', function(req, res) {
+app.get('/show', restrict, function(req, res) {
 	Guest.find(function(err, guests) {
 		if (err)
 			res.send(err);

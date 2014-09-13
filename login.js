@@ -17,8 +17,6 @@ exports.check = function(env){
 	}
 	else {
 		res.redirect('login');
-		console.log(env.password);
-		console.log(env.username);
 	}
 };
 

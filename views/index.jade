@@ -7,24 +7,65 @@ html
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Dancing+Script:700|Alegreya', type='text/css')
+    style
+      | html { background: url( 'http://upload.wikimedia.org/wikipedia/commons/4/47/San_jose_antigua_guatemala_cathedral_2009.JPG') no-repeat center center fixed;
+      |       -webkit-background-size: cover;
+      |       -moz-background-size: cover;
+      |       -o-background-size: cover;
+      |       background-size: cover; }
+      | body { background-color: transparent;}
+      | .container { margin-top: 3%; }
+      | h2 {font-family: 'Dancing Script', cursive;}
+      | label {font-family: 'Alegreya', serif;}
+      | .palewell { background-color: rgba(245, 245, 245, 0.8);
+      |             padding: 15px;
+      |             border-radius: 5px;
+      |             text-align: center;}
+
   body
     .container
       .row
-        .col-sm-6.col-sm-offset-3.well
-          form.form-horizontal(name="createguet",method="post",action="/", role="form")
+        .col-sm-6.col-sm-offset-3.palewell
+          h2(style="text-align: center;") Please join us in celebrating down in Guatemala. It will be grand!
+          br
+          br
+          form.form-horizontal(name="createguest",method="post",action="/", role="form")
             fieldset
-              legend Contact Info
-              .form-group
-                label.col-sm-4.control-label(for="textinput") First Name
-                .col-sm-8
-                  input.form-control(id="first-name" name="firstName" type="text")
-              .form-group
-                label.col-sm-4.control-label(for="textinput") Last Name
-                .col-sm-8
-                  input.form-control(id="last-name" name="lastName" type="text")
-              .form-group
-                label.col-sm-4.control-label(for="textinput") Zip Code
-                .col-sm-6
-                  input.form-control(id="zipcode" name="zipcode" type="text")
-              button.btn.pull-right.btn-primary#btnSubmit(type="submit") submit
+                .form-group
+                    label.col-sm-3.control-label(for='inputFirst') First Name
+                    .col-sm-9
+                      input#inputFirst.form-control(type='text', name='firstName')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputLast') Last Name
+                    .col-sm-9
+                      input#inputLast.form-control(type='text', name='lastName')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputEmail') Email Address
+                    .col-sm-9
+                      input#inputLast.form-control(type='email', name='email')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputAddress1') Address Line 1
+                    .col-sm-9
+                      input#inputAddress1.form-control(type='text', name='address1')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputAddress2') Address Line 2
+                    .col-sm-9
+                      input#inputAddress2.form-control(type='text', name='address2')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputCity') City
+                    .col-sm-9
+                      input#inputCity.form-control(type='text', name='city')
+                  .form-group
+                    label.col-sm-3.control-label(for='textinput') State
+                    .col-sm-3
+                      input.form-control(type='text', name='state')
+                    label.col-sm-3.control-label(for='textinput') Zip Code
+                    .col-sm-3
+                      input.form-control(type='text', name='zipcode')
+                  .form-group
+                    label.col-sm-3.control-label(for='inputCountry') Country
+                    .col-sm-9
+                      input#inputCountry.form-control(type='text', name='country')
+                  button.btn.pull-right.btn-default#btnSubmit(type="submit") submit
 

@@ -75,7 +75,15 @@ app.post('/', function(req, res){
   var guest = new Guest();
   guest.firstName = req.body.firstName;
   guest.lastName = req.body.lastName;
+  guest.email = req.body.email;
+  guest.address1 = req.body.address1;
+  guest.address2 = req.body.address2;
+  guest.city = req.body.city;
+  guest.country = req.body.country;
+  guest.state = req.body.state;
   guest.zip = req.body.zipcode;
+
+
 
   guest.save(function(err) {
   	if (err)

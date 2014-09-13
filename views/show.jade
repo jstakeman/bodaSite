@@ -16,13 +16,23 @@ html
               tr
                 th First Name
                 th Last Name
+                th Address 1
+                th Address 2
+                th City
+                th State
                 th Zipcode
+                th Email
             tbody
               each guest, i in guestlist
                 tr
                   td= guest.firstName
                   td= guest.lastName
+                  td= guest.address1
+                  td= guest.address2
+                  td= guest.city
+                  td= guest.state
                   td= guest.zip
+                  td= guest.email
 
 
 

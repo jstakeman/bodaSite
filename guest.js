@@ -10,7 +10,8 @@ var GuestSchema = new Schema({
   city: String,
   state: String,
   country: String,
-	zip: String
+	zip: String,
+	erased: Boolean 
 })
 
 module.exports = mongoose.model('Guest', GuestSchema);

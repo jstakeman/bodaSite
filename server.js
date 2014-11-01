@@ -93,12 +93,22 @@ app.post('/', function(req, res){
   })
 });
 
-app.get('/show', restrict, function(req, res) {
-	Guest.find(function(err, guests) {
-		if (err)
-			res.send(err);
-		res.render('show' , {guestlist: guests});
-	});
+app.get('/delete/:id', function(req, res){
+  Guest.findById( req.params.id, function (err, guest){
+guest.erased = true;
+guest.save(function(req, res){
+if (err) res.send(err);
+console.log('erased it');});
+})
+res.redirect('/show');
+});
+
+app.get('/show', function(req, res) {
+  Guest.find({$or:[{erased:false},{erased:{$exists:false}}]}, function(err, guests) {
+    if (err)
+      res.send(err);
+    res.render('show' , {guestlist: guests});
+  }); 
 });
 
 //Start the server
